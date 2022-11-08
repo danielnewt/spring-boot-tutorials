@@ -15,17 +15,18 @@ public class ExampleRestApiApplication {
 		SpringApplication.run(ExampleRestApiApplication.class, args);
 	}
 
-	@Bean
-	public CommandLineRunner commandLineRunner(ApplicationContext ctx){
-		return args -> {
-			System.out.println("Beans provided by Spring Boot:");
-
-			var beanNames = ctx.getBeanDefinitionNames();
-			Arrays.sort(beanNames);
-
-			for(var beanName : beanNames){
-				System.out.println(beanName);
-			}
-		};
-	}
+	//The below CommandLineRunner Bean prints all Bean definitions in the project to consoles
+//	@Bean
+//	public CommandLineRunner commandLineRunner(ApplicationContext ctx){
+//		return args -> {
+//			System.out.println("Beans provided by Spring Boot:");
+//
+//			var beanNames = ctx.getBeanDefinitionNames();
+//			Arrays.sort(beanNames);
+//
+//			for(var beanName : beanNames){
+//				System.out.println(beanName);
+//			}
+//		};
+//	}
 }
