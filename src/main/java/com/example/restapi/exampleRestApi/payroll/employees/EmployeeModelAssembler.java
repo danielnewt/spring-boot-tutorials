@@ -1,4 +1,4 @@
-package com.example.restapi.exampleRestApi.payroll;
+package com.example.restapi.exampleRestApi.payroll.employees;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 

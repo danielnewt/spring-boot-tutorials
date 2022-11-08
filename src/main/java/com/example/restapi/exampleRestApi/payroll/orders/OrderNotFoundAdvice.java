@@ -1,4 +1,4 @@
-package com.example.restapi.exampleRestApi.payroll;
+package com.example.restapi.exampleRestApi.payroll.orders;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-class EmployeeNotFoundAdvice {
+class OrderNotFoundAdvice {
 
     @ResponseBody
-    @ExceptionHandler(EmployeeNotFoundException.class)
+    @ExceptionHandler(OrderNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String employeeNotFoundHandler(EmployeeNotFoundException ex) {
+    String employeeNotFoundHandler(OrderNotFoundException ex) {
         return ex.getMessage();
     }
 }

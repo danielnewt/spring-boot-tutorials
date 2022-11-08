@@ -1,4 +1,4 @@
-package com.example.restapi.exampleRestApi.payroll;
+package com.example.restapi.exampleRestApi.payroll.employees;
 
 class EmployeeNotFoundException extends RuntimeException {
 

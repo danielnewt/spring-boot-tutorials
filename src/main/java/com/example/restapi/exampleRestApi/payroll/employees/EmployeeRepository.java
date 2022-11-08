@@ -1,4 +1,4 @@
-package com.example.restapi.exampleRestApi.payroll;
+package com.example.restapi.exampleRestApi.payroll.employees;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

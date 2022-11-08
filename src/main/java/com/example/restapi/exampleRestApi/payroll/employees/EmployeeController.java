@@ -1,4 +1,4 @@
-package com.example.restapi.exampleRestApi.payroll;
+package com.example.restapi.exampleRestApi.payroll.employees;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -96,7 +96,10 @@ class EmployeeController {
     }
 
     @DeleteMapping("/employees/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    ResponseEntity<?> deleteEmployee(@PathVariable Long id) {
+
         repository.deleteById(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
