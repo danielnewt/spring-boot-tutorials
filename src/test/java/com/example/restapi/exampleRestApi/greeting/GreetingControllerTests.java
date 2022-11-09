@@ -1,9 +1,9 @@
-package com.example.restapi.exampleRestApi.controllers;
+package com.example.restapi.exampleRestApi.greeting;
 
-import com.example.restapi.exampleRestApi.greeting.GreetingController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(GreetingController.class)
+@WebMvcTest(value = GreetingController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class}) //excludeAutoConfiguration allows us to test without security enabled
 @AutoConfigureRestDocs(outputDir = "target/generated-snippets")
 public class GreetingControllerTests {
 
@@ -27,7 +27,7 @@ public class GreetingControllerTests {
 
     @Test
     public void index_shouldReturnMessage() throws Exception{
-        this.mockMvc.perform(get("/"))
+        this.mockMvc.perform(get("/greeting"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Greetings from Spring Boot!")))
                 .andDo(document("index"));
@@ -35,7 +35,7 @@ public class GreetingControllerTests {
 
     @Test
     public void greeting_shouldReturnDefaultMessage() throws Exception{
-        this.mockMvc.perform(get("/greeting"))
+        this.mockMvc.perform(get("/greeting/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello, World")))
                 .andDo(document("greeting", responseFields(
@@ -48,7 +48,7 @@ public class GreetingControllerTests {
     public void greeting_shouldReturnMessageWithName() throws Exception{
         var name = "Bobby";
 
-        this.mockMvc.perform(get("/greeting?name=" + name))
+        this.mockMvc.perform(get("/greeting/hello?name=" + name))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello, " + name)))
                 .andDo(document("greeting", responseFields(
